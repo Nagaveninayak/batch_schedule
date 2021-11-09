@@ -1,0 +1,348 @@
+import { Button, message, Input, Drawer, Form, Col, Row, Select, DatePicker } from 'antd';
+<Form onSubmit={handleFormSubmit} layout="vertical" hideRequiredMark>
+{/* First and second name */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item name="first name" rules={[{ required: true, message: 'First name' }]}>
+      <Input placeholder="First Name" />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item name="last name" rules={[{ required: true, message: 'last name' }]}>
+      <Input placeholder="Last Name" />
+    </Form.Item>
+  </Col>
+</Row>
+{/* joining and start date */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="joiningDate"
+      rules={[{ required: true, message: 'Joining Date' }]}
+    >
+      <DatePicker placeholder="Joining Date" style={{ width: '100%' }} />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item name="startDate" rules={[{ required: true, message: 'Start Date' }]}>
+      <DatePicker placeholder="Start Date" style={{ width: '100%' }} />
+    </Form.Item>
+  </Col>
+</Row>
+{/* Date of Birth and gender */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="dateOfBirth"
+      rules={[{ required: true, message: 'Enter date of birthday' }]}
+    >
+      <DatePicker placeholder="Date of Birth" style={{ width: '100%' }} />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="gender"
+      rules={[{ required: true, message: 'Please select an gender' }]}
+    >
+      <Select placeholder="Gender">
+        <Option value="male">Male</Option>
+        <Option value="woman">woman</Option>
+        <Option value="not applicable">not applicable</Option>
+      </Select>
+    </Form.Item>
+  </Col>
+</Row>
+{/* Mobile and Whatsup */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="mobile"
+      rules={[{ required: true, message: 'Enter the mobile number' }]}
+    >
+      <Input placeholder="Mobile" />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="whatsApp"
+      rules={[{ required: true, message: 'Enter the whatsApp number' }]}
+    >
+      <Input placeholder="WhatsApp" />
+    </Form.Item>
+  </Col>
+</Row>
+{/* Nationality and category */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="nationality"
+      rules={[{ required: true, message: 'Enter the Nationality' }]}
+    >
+      <Input placeholder="Nationality" />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="category"
+      rules={[{ required: true, message: 'Enter the Category number' }]}
+    >
+      <Input placeholder="Category" />
+    </Form.Item>
+  </Col>
+</Row>
+{/* Education/Qualification and total experience */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="qualification"
+      rules={[{ required: true, message: 'Enter the Education/Qualification' }]}
+    >
+      <Input placeholder="Education/Qualification" />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="totalExperience"
+      rules={[{ required: true, message: 'Enter the Total Experience' }]}
+    >
+      <Input placeholder="Total Experience" />
+    </Form.Item>
+  </Col>
+</Row>
+{/* Teacher Type and Language Known */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="teacherType"
+      rules={[{ required: true, message: 'Enter the Teacher Type' }]}
+    >
+      <Input placeholder="Teacher Type" />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="languageKnown"
+      rules={[{ required: true, message: 'Enter the Languages Known' }]}
+    >
+      <Input placeholder="Languages Known" />
+    </Form.Item>
+  </Col>
+</Row>
+{/* upload resume and upload video profile */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="uploadResume"
+      rules={[{ required: true, message: 'Enter the Upload Resume' }]}
+    >
+      <Input placeholder="Upload Resume" />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="videoProfile"
+      rules={[{ required: true, message: 'Enter the Upload Video Profile' }]}
+    >
+      <Input placeholder="Upload Video Profile" />
+    </Form.Item>
+  </Col>
+</Row>
+{/* upload certificate and upload photo */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="uploadCertificate"
+      rules={[{ required: true, message: 'Enter the Upload Certificate' }]}
+    >
+      <Input placeholder="Upload Certificate" />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="uploadPhoto"
+      rules={[{ required: true, message: 'Enter the Upload Photo' }]}
+    >
+      <Input placeholder="Upload Photo" />
+    </Form.Item>
+  </Col>
+</Row>
+{/* Availability */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="availabiltyWeek"
+      rules={[{ required: true, message: 'Enter the Availabilty During the Week' }]}
+    >
+      <Input placeholder="Availabilty During the Week" />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="availabiltyWeekend"
+      rules={[{ required: true, message: 'Enter the Availabilty During the Week' }]}
+    >
+      <Input placeholder="Availabilty During the Week" />
+    </Form.Item>
+  </Col>
+</Row>
+{/* status */}
+<Row gutter={16}>
+  <Col span={12}>
+    <Form.Item
+      name="status"
+      rules={[
+        {
+          required: true,
+          message: 'please enter Status',
+        },
+      ]}
+    >
+      <Select placeholder="Status">
+        <Option value="active">Active</Option>
+        <Option value="onHold">On Hold</Option>
+        <Option value="leave">Leave</Option>
+      </Select>
+    </Form.Item>
+  </Col>
+</Row>
+{/* <Button onClick={onClose} type="primary" block>
+  Add Teacher
+</Button> */}
+<Input type="submit" value="submit" />
+</Form>
+
+
+
+
+
+
+<Row>
+          <Col span={8}></Col>
+          <Col span={6}>
+            <p>Name</p>
+            <p>Joining Date</p>
+            <p>Start Date</p>
+            <p>Gender</p>
+            <p>Mobile</p>
+            <p>WhatsApp</p>
+            <p>Email</p>
+            <p>Address</p>
+            <p>Nationality</p>
+            <p>Category</p>
+            <p>Gender</p>
+            <p>Education</p>
+            <p>Experience</p>
+            <p>Teacher Type</p>
+            <p>Languages Known</p>
+            <p>Resume</p>
+            <p>Video Profile</p>
+            <p>Certificates</p>
+            <p>Availabilty During the Week</p>
+            <p>Availabilty During the Weekend</p>
+            <p>Status</p>
+          </Col>
+          <Col span={8}>
+            <p>{tempData.name}</p>
+            <p>{tempData.joiningDate}</p>
+            <p>{tempData.startDate}</p>
+            <p>{tempData.gender}</p>
+            <p>{tempData.mobile}</p>
+            <p>{tempData.whatsApp}</p>
+            <p>{tempData.email}</p>
+            {/* <p>{tempData.address}</p> */}
+            <p>{tempData.nationality}</p>
+            <p>{tempData.category}</p>
+            <p>{tempData.gender}</p>
+            <p>{tempData.education}</p>
+            <p>{tempData.experience}</p>
+            <p>{tempData.teacherType}</p>
+            <p>{tempData.languageKnown}</p>
+
+            <p>{tempData.status}</p>
+          </Col>
+
+
+
+
+
+{"firstName":"ds","lastName":"ds","joiningDate":"2021-11-12","startDate":"2021-11-12","dateOfBirth":"2021-11-04","gender":"Woman","mobile":"1234567890","whatsapp":"123213","nationality":"sds","category":"dddddss","education":"zcc","experience":"33","teacherType":"native","languagesKnown":"fsaf","resume":"C:\\fakepath\\qn_dbschema_leads.mwb","videoProfile":"","certificate":"","photo":"","weekAvailabilty":"","weekendAvailabilty":"","status":"active"}
+
+{"firstName":"firstName",
+"lastName":"lastName",
+"joiningDate":"2021-11-18",
+"startDate":"2021-11-12",
+"dateOfBirth":"2021-11-12",
+"gender":"Male",
+"mobile":"1234567890",
+"whatsapp":"1232133783",
+"nationality":"Indian",
+"category":"dddddss",
+"education":"zcc",
+"experience":"33",
+"teacherType":"native",
+"languagesKnown":"english",
+"resume":"C:\\fakepath\\qn_dbschema_leads.mwb",
+"videoProfile":"C:\\fakepath\\invite.ics",
+"certificate":"C:\\fakepath\\ALU_a-1.docx",
+"photo":"C:\\fakepath\\qn_dbschema_leads.mwb",
+"weekAvailabilty":"",
+"weekendAvailabilty":"",
+"status":"onHold"}
+
+//expectations
+{
+    "firstname": "firstname",
+    "lastname": "lastname",
+    "dob": "2021-11-04 23:27:55",
+    "mobile": "mobile",
+    "email": "email",  
+    "address": "address",
+    "whatsapp": "whatsapp",
+    "status": 1,
+    "gender": "Male",
+    "nationality": 1,
+    "statusId": 1,
+    "languages": "languages",
+    "nationalityId": 1,   
+    "category": 1,
+    "lead_type": 1,   
+    "photo":"photo",
+    "created_at": "2021-11-05 15:14:04",
+    "updated_at": "2021-11-05 15:14:04",
+    "lead": {
+      "resume": "data.resume",
+    "qualification": "dataqualification",
+    "totalexperiance": "data.totalexperiance",
+        "video": "data.vide",
+    "certificates": "data.certificates",
+     "created_at": "2021-11-05 15:14:04",
+    "updated_at": "2021-11-05 15:14:04",
+     "joiningdate": "2021-11-05 15:14:04"
+    },
+    "leadAvailability":[
+        {
+            "startdate":"2021-11-05 15:14:04",
+            "weekday":1,
+            "start_slot":2,
+            "end_slot":3
+            },
+        {
+            "startdate":"2021-11-05 15:14:04",
+            "weekday":1,
+            "start_slot":2,
+            "end_slot":3
+            },
+            {
+            "startdate":"2021-11-05 15:14:04",
+            "weekday":2,
+            "start_slot":4,
+            "end_slot":8
+            },
+            {
+            "startdate":"2021-11-05 15:14:04",
+            "weekday":5,
+            "start_slot":11,
+            "end_slot":12
+            }
+    ]
+}

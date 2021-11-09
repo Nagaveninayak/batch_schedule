@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { PlusOutlined } from '@ant-design/icons';
-import { Button, message, Input, Drawer } from 'antd';
+import { Button, message, Drawer } from 'antd';
 import React, { useState, useRef } from 'react';
 import { useIntl, FormattedMessage } from 'umi';
 import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
@@ -76,8 +76,21 @@ const handleRemove = async (selectedRows: API.RuleListItem[]) => {
     return true;
   } catch (error) {
     hide();
-    message.error('Delete failed, please try again');
+    console.log('error', error);
+    message.error('Delete failed, please try again', error);
     return false;
+  }
+};
+
+const handleDelete = (entity) => {
+  console.log(entity);
+  const confirmDelete = window.confirm(`Do you want to delete ${entity.batchId} ?`);
+  if (confirmDelete) {
+    try {
+      removeRule(entity);
+    } catch (error) {
+      message.error('Delete failed, please try again');
+    }
   }
 };
 
@@ -100,6 +113,7 @@ const BatchList: React.FC = () => {
   const [selectedRowsState, setSelectedRows] = useState<API.RuleListItem[]>([]);
 
   const [tempData, setTempData] = useState({});
+  // const [deleteData, setDeleteData] = useState();
 
   /**
    * @en-US International configuration
@@ -221,6 +235,21 @@ const BatchList: React.FC = () => {
         <FormattedMessage id="pages.searchTable.updateForm.titledelete" defaultMessage="delete" />
       ),
       dataIndex: 'delete',
+      tip: 'The rule name is the unique key',
+      render: (dom, entity) => {
+        return (
+          <a
+            onClick={() => {
+              // console.log(entity);
+              setCurrentRow(entity);
+              handleDelete(entity);
+              console.log('currentrow', currentRow);
+            }}
+          >
+            delete
+          </a>
+        );
+      },
     },
   ];
 
@@ -292,6 +321,7 @@ const BatchList: React.FC = () => {
           <Button
             onClick={async () => {
               await handleRemove(selectedRowsState);
+              console.log(selectedRowsState);
               setSelectedRows([]);
               actionRef.current?.reloadAndRest?.();
             }}

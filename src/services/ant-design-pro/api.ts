@@ -80,6 +80,26 @@ export async function batches(
   });
 }
 
+//api for teacher batches
+export async function teacherBatches(
+  params: {
+    // query
+    /** 当前的页码 */
+    current?: number;
+    /** 页面的容量 */
+    pageSize?: number;
+  },
+  options?: { [key: string]: any },
+) {
+  return request<API.RuleList>('/api/teacherBatches', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
 /** 新建规则 PUT /api/rule */
 export async function updateRule(options?: { [key: string]: any }) {
   return request<API.RuleListItem>('/api/rule', {
@@ -90,7 +110,7 @@ export async function updateRule(options?: { [key: string]: any }) {
 
 /** 新建规则 POST /api/rule */
 export async function addRule(options?: { [key: string]: any }) {
-  return request<API.RuleListItem>('/api/rule', {
+  return request<API.RuleListItem>('http://localhost:3000/leads', {
     method: 'POST',
     ...(options || {}),
   });
@@ -99,6 +119,13 @@ export async function addRule(options?: { [key: string]: any }) {
 /** 删除规则 DELETE /api/rule */
 export async function removeRule(options?: { [key: string]: any }) {
   return request<Record<string, any>>('/api/rule', {
+    method: 'DELETE',
+    ...(options || {}),
+  });
+}
+
+export async function removeBatch(options?: { [key: string]: any }) {
+  return request<Record<string, any>>('/api/batches', {
     method: 'DELETE',
     ...(options || {}),
   });

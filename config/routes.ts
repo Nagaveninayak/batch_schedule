@@ -55,6 +55,12 @@
     component: './BatchList',
   },
   {
+    name: 'teacher batch list',
+    icon: 'table',
+    path: '/teacherBatch',
+    component: './TeacherBatchList',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
